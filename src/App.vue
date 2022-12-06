@@ -1,26 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="game">
+    <transition name="component-fade" mode="out-in">
+      <component :is="Component" class="page-inner"/>
+    </transition>
+    <Instruction/>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+<script setup>
+import Start from "@/components/AppStart";
+import Game from "@/components/AppGame";
+import Instruction from '@/components/Instruction'
+import {computed} from "vue";
+import {useStore} from "vuex";
+const store = useStore()
+const Component = computed(()=> {
+  return store.getters.isPlaying ? Game : Start
+})
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss" scoped>
+// Плавная смена компонента
+.component-fade {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity 0.3s ease;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
 }
 </style>

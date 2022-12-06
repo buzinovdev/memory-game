@@ -1,0 +1,39 @@
+@import "vars";
+@import "normalize.min";
+
+*, * * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  list-style-type: none;
+
+  &::after, &::before {
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    list-style-type: none;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font;
+  color: $black;
+  font-size: 16px;
+}
+
+h1 {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
