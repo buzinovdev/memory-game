@@ -16,4 +16,4 @@ npm run build
 ```
 
 ### How you can play this game
-Dowload 
+Download memory-game folder and run index.html
